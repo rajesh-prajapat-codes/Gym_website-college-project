@@ -8,7 +8,19 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-  origin: "https://rajeshgymweb.netlify.app",
+  origin: (origin, callback) => {
+    const allowedOrigins = [
+      "http://localhost:5173",
+      "https://rajeshgymweb.netlify.app",
+      "https://rajeshgymweb.netlify.app/"
+    ];
+
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true
 }));
 
