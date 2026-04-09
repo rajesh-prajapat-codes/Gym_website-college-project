@@ -8,18 +8,16 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-  origin: "https://rajeshgymweb.netlify.app/", // your frontend
+  origin: "https://rajeshgymweb.netlify.app",
   credentials: true
 }));
 
 app.use(express.json());
 
-// EMAIL ROUTE
 app.post("/send/mail", async (req, res) => {
   try {
     const { name, email, phone, address, message } = req.body;
 
-    // transporter setup
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -28,19 +26,18 @@ app.post("/send/mail", async (req, res) => {
       },
     });
 
-    // mail content
     const mailOptions = {
       from: process.env.EMAIL,
       to: process.env.EMAIL,
       subject: "New Contact Message",
       html: `
-  <h3>New Message</h3>
-  <p><b>Name:</b> ${name}</p>
-  <p><b>Email:</b> ${email}</p>
-  <p><b>Phone:</b> ${phone}</p>
-  <p><b>Address:</b> ${address}</p>
-  <p><b>Message:</b> ${message}</p>
-`,
+        <h3>New Message</h3>
+        <p><b>Name:</b> ${name}</p>
+        <p><b>Email:</b> ${email}</p>
+        <p><b>Phone:</b> ${phone}</p>
+        <p><b>Address:</b> ${address}</p>
+        <p><b>Message:</b> ${message}</p>
+      `,
     };
 
     await transporter.sendMail(mailOptions);
@@ -51,6 +48,7 @@ app.post("/send/mail", async (req, res) => {
     });
 
   } catch (error) {
+    console.log(error);
     res.status(500).json({
       success: false,
       message: "Error sending message",
@@ -58,6 +56,8 @@ app.post("/send/mail", async (req, res) => {
   }
 });
 
-app.listen(4000, () => {
-  console.log("Server running on port 4000");
+const PORT = process.env.PORT || 4000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
