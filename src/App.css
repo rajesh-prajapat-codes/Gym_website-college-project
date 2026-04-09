@@ -28,6 +28,9 @@ header p {
 
 
 
+
+
+
 .hero {
   min-height: 100vh;
   position: relative;
@@ -831,3 +834,72 @@ html {
   cursor: not-allowed;
 }
 
+/* SECTION */
+.qr-section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #000000, #1a1a1a, #2c3e50);
+  padding: 20px;
+}
+
+/* CARD */
+.qr-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  backdrop-filter: blur(15px);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  color: white;
+}
+
+/* TITLE */
+.qr-card h1 {
+  margin-bottom: 10px;
+}
+
+/* TEXT */
+.qr-card p {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* QR IMAGE */
+.qr-image {
+  margin: 20px 0;
+}
+
+.qr-image img {
+  width: 200px;
+  border-radius: 15px;
+  background: white;
+  padding: 10px;
+}
+
+/* DETAILS */
+.qr-details {
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+/* BUTTON */
+.done-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 25px;
+  border: none;
+  background: linear-gradient(45deg, #2ecc71, #27ae60);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.done-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(46, 204, 113, 0.5);
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
+import QRCode from "./pages/QRCode";
 
 // Components
 import Navbar from "./component/Navbar";
@@ -46,6 +47,7 @@ function App() {
         <Route path="/start" element={<StartJourny />} />
         <Route path="/plan" element={<DiscoverPlan />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/qrcode" element={<QRCode />} />
       </Routes>
 
       {/* Footer har page par */}
